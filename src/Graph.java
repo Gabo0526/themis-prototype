@@ -39,6 +39,9 @@ public class Graph {
 
     // -------------------------------------------------------------
     public void pureKahnAlgorithm() {
+        getInDegrees();
+        getOutDegrees();
+
         Queue<Integer> queue = new LinkedList<>();
 
         for (int i = 0; i < nVerts; i++) {

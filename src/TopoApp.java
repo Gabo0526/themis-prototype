@@ -80,8 +80,6 @@ public class TopoApp {
                 + "\nQuinto semestre: " + PURPLE + "PURPLE\n\n" + RESET);
 
         theGraph.showAdjMatrix();
-        theGraph.getInDegrees();
-        theGraph.getOutDegrees();
         theGraph.showDegrees();
 
         theGraph.pureKahnAlgorithm();

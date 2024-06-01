@@ -1,8 +1,8 @@
-## Getting Started
+# Getting Started
 
 Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-## Folder Structure
+## Structure
 
 The workspace contains two folders by default, where:
 
@@ -10,6 +10,7 @@ The workspace contains two folders by default, where:
 - `lib`: the folder to maintain dependencies
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+The Khan Algortihm is in the Graph class.
 
 > If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
