@@ -10,6 +10,7 @@ public class Graph {
     private int[] outDegrees;
     private int adjMat[][]; // adjacency matrix
     private int nVerts; // current number of vertices
+    private Queue<Integer> semesterIndexes;
 
     // -------------------------------------------------------------
     public Graph() // constructor
@@ -19,6 +20,7 @@ public class Graph {
         nVerts = 0;
         inDegrees = new int[MAX_VERTS];
         outDegrees = new int[MAX_VERTS];
+        semesterIndexes = new LinkedList<>();
     } // end constructor
       // -------------------------------------------------------------
 
@@ -109,5 +111,9 @@ public class Graph {
         System.out.println("Los grados de entrada son: " + Arrays.toString(inDegrees));
 
         System.out.println("Los grados de salida son; " + Arrays.toString(outDegrees));
+    }
+
+    public void addSemesterIndex(int index) {
+        semesterIndexes.offer(index);
     }
 } // end class Graph

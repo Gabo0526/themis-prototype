@@ -20,6 +20,8 @@ public class TopoApp {
         theGraph.addVertex(CYAN + "Programacion I", 4); // 3
         theGraph.addVertex(CYAN + "Comunicacion Oral y Escrita", 1); // 4
 
+        theGraph.addSemesterIndex(5);
+
         // Segundo Semestre
 
         theGraph.addVertex(BLUE + "Ecuaciones Diferenciales Ordinarias", 3); // 5
@@ -27,6 +29,8 @@ public class TopoApp {
         theGraph.addVertex(BLUE + "Fundamentos de Electronica", 3); // 7
         theGraph.addVertex(BLUE + "Programacion II", 4); // 8
         theGraph.addVertex(BLUE + "Analisis Socioeconomico y Politico del Ecuador", 1); // 9
+
+        theGraph.addSemesterIndex(10);
 
         // Tercer Semestre
 
@@ -36,6 +40,8 @@ public class TopoApp {
         theGraph.addVertex(RED + "EDA I", 3); // 13
         theGraph.addVertex(RED + "Fundamentos de Redes y Conectividad", 3); // 14
         theGraph.addVertex(RED + "Asignatura de Artes y Humanidades", 1); // 15
+
+        theGraph.addSemesterIndex(16);
 
         // Cuarto Semestre
 
@@ -47,6 +53,8 @@ public class TopoApp {
         theGraph.addVertex(YELLOW + "EDA II", 2); // 18
         // theGraph.addVertex("Fundamentos de Bases de Datos"); // 20
         theGraph.addVertex(YELLOW + "Asignatura de Economia y Sociedad", 1); // 19
+
+        theGraph.addSemesterIndex(20);
 
         // Quinto Semestre
 
