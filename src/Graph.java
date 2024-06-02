@@ -15,7 +15,6 @@ public class Graph {
     public Graph() // constructor
     {
         vertexList = new Vertex[MAX_VERTS];
-        // adjacency matrix
         adjMat = new int[MAX_VERTS][MAX_VERTS];
         nVerts = 0;
         inDegrees = new int[MAX_VERTS];
