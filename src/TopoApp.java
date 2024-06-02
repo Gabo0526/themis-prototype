@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class TopoApp {
 
     public static void main(String[] args) {
@@ -8,6 +10,8 @@ public class TopoApp {
         String RED = "\033[0;31m"; // Rojo
         String YELLOW = "\033[0;33m";// Amarillo
         String PURPLE = "\033[0;316m";// Púrpura
+
+        Scanner scanner = new Scanner(System.in);
 
         long t0 = System.currentTimeMillis();
 
@@ -87,10 +91,14 @@ public class TopoApp {
                 + RESET
                 + "\nQuinto semestre: " + PURPLE + "PURPLE\n\n" + RESET);
 
+        System.out.println("La matriz de adyacencia es:");
         theGraph.showAdjMatrix();
-        theGraph.showDegrees();
 
-        theGraph.pureKahnAlgorithm();
+        theGraph.showFirstSubjects();
+
+        System.out.println("Ordenamiento topologico:");
+
+        theGraph.pureKahnAlgorithm(scanner);
 
         long tf = System.currentTimeMillis();
 
