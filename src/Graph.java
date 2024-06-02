@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -7,24 +8,22 @@ import java.util.Scanner;
 public class Graph {
 
     private final int MAX_VERTS = 51;
+    private int nVerts; // current number of vertices
     private Vertex vertexList[]; // list of vertices
+    private int adjMat[][]; // adjacency matrix
     private int[] inDegrees;
     private int[] outDegrees;
-    private int adjMat[][]; // adjacency matrix
-    private int nVerts; // current number of vertices
     private Queue<Integer> semesterIndexes;
-    private Queue<Integer> topologicalSort;
 
     // -------------------------------------------------------------
     public Graph() // constructor
     {
+        nVerts = 0;
         vertexList = new Vertex[MAX_VERTS];
         adjMat = new int[MAX_VERTS][MAX_VERTS];
-        nVerts = 0;
         inDegrees = new int[MAX_VERTS];
         outDegrees = new int[MAX_VERTS];
         semesterIndexes = new LinkedList<>();
-        topologicalSort = new LinkedList<>();
     } // end constructor
       // -------------------------------------------------------------
 
@@ -43,37 +42,40 @@ public class Graph {
     }
 
     // -------------------------------------------------------------
-    public void pureKahnAlgorithm(Scanner scanner) {
+    public void modifiedKahnAlgorithm(Scanner scanner) {
         getInDegrees();
         getOutDegrees();
 
-        Queue<Integer> queue = new LinkedList<>();
+        Deque<Integer> queue = new LinkedList<Integer>();
 
-        for (int i = semesterIndexes.poll(); i < semesterIndexes.peek(); i++) {
-            if (inDegrees[i] == 0) {
-                queue.offer(i);
+        if (semesterIndexes.peek() == 0) {
+            semesterIndexes.poll();
+            semesterIndexes.poll();
+
+            for (int i = 0; i < semesterIndexes.peek(); i++) {
+                if (inDegrees[i] == 0) {
+                    queue.offer(i);
+                }
+            }
+        } else {
+
+            for (int i = semesterIndexes.poll(); i < semesterIndexes.peek(); i++) {
+                if (inDegrees[i] == 0) {
+                    queue.offer(i);
+                }
             }
         }
 
         while (!queue.isEmpty()) {
 
-            boolean isApproved;
+            System.out.println("Aprobaste " + vertexList[queue.peek()].subject + "?\ns/n");
+            int currentVertex = queue.poll();
 
-            int currentVertex;
+            vertexList[currentVertex].coursed = (Objects.equals(scanner.nextLine(), "s")) ? true : false;
 
-            if (!topologicalSort.isEmpty()) {
-                System.out.println("Aprobaste " + vertexList[topologicalSort.peek()].subject + "?\ns/n");
-                currentVertex = topologicalSort.poll();
-            } else {
-                System.out.println("Aprobaste " + vertexList[queue.peek()].subject + "?\ns/n");
-                currentVertex = queue.poll();
-            }
+            if (!vertexList[currentVertex].coursed) {
 
-            isApproved = (Objects.equals(scanner.nextLine(), "s")) ? true : false;
-
-            if (!isApproved) {
-
-                queue.offer(currentVertex);
+                queue.addFirst(currentVertex);
                 System.out.println(vertexList[currentVertex].subject);
 
             } else {
@@ -139,14 +141,5 @@ public class Graph {
 
     public void addSemesterIndex(int index) {
         semesterIndexes.offer(index);
-    }
-
-    public void showFirstSubjects() {
-        System.out.println("Las materias del primer nivel son:");
-
-        for (int i = 0; i < semesterIndexes.peek(); i++) {
-            topologicalSort.offer(i);
-            System.out.println(vertexList[i].subject);
-        }
     }
 } // end class Graph

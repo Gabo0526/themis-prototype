@@ -17,6 +17,8 @@ public class TopoApp {
 
         Graph theGraph = new Graph();
 
+        theGraph.addSemesterIndex(0);
+
         // Primer Semestre
         theGraph.addVertex(CYAN + "Algebra Lineal", 3); // 0
         theGraph.addVertex(CYAN + "Calculo en una variable", 3); // 1
@@ -94,11 +96,9 @@ public class TopoApp {
         System.out.println("La matriz de adyacencia es:");
         theGraph.showAdjMatrix();
 
-        theGraph.showFirstSubjects();
-
         System.out.println("Ordenamiento topologico:");
 
-        theGraph.pureKahnAlgorithm(scanner);
+        theGraph.modifiedKahnAlgorithm(scanner);
 
         long tf = System.currentTimeMillis();
 
